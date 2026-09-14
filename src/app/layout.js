@@ -34,7 +34,7 @@ export const metadata = {
       {
         url: "/iete.png",
         sizes: "32x32",
-        type: "image/svg+xml",
+        type: "image/png",
       },
     ],
   },
