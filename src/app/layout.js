@@ -32,7 +32,7 @@ export const metadata = {
   icons: {
     icon: [
       {
-        url: "/IETELOGO.svg",
+        url: "/iete.png",
         sizes: "32x32",
         type: "image/svg+xml",
       },
