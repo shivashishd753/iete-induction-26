@@ -145,13 +145,21 @@ export default function SwipeButton() {
           sm:w-14
         "
       >
-        <span
+        {/* <span
           className={`text-lg transition-transform duration-300 ${
             progress > 10 ? "translate-x-1" : ""
           }`}
         >
           →
-        </span>
+        </span> */}
+
+        <span
+  className={`text-xl font-semibold transition-transform duration-300 ${
+    progress > 10 ? "translate-x-1" : ""
+  }`}
+>
+  ⟶
+</span>
       </div>
     </div>
   );
