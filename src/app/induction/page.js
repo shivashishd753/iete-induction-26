@@ -1369,6 +1369,7 @@ const step2Valid =
 
                     {[
                       "Web Development",
+                      "Competitive Programming",
                       "App Development",
                       "IoT",
                       "Cybersecurity",
