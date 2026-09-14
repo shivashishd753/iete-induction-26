@@ -109,7 +109,7 @@ export default function SwipeButton() {
           sm:text-xs
         "
       >
-        {progress >= 85 ? "Entering..." : "Let's go....."}
+        {progress >= 85 ? "Entering..." : "Swipe to enter"}
       </div>
 
       {/* Swipe handle */}

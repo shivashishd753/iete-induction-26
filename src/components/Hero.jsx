@@ -690,7 +690,7 @@ const Hero = () => {
   
 
             <span className="animate-fade-up text-sm uppercase tracking-[0.25em] text-white/85 sm:text-base sm:tracking-[0.3em] md:text-lg lg:text-xl">
-              IETE-SF
+              IETE-Students' Forum
             </span>
 
           </div>
