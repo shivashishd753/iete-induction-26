@@ -814,7 +814,7 @@ const step2Valid =
     text-white
     outline-none
     transition-colors
-    placeholder:text-white/20
+    placeholder:text-white/60
     sm:py-4
     sm:text-lg
     ${
