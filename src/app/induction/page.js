@@ -653,8 +653,12 @@
 import { useState } from "react";
 
 export default function InductionPage() {
-  const [step, setStep] = useState(1);
-  const [submitted, setSubmitted] = useState(false);
+//   const [step, setStep] = useState(1);
+//   const [submitted, setSubmitted] = useState(false);
+
+const [step, setStep] = useState(1);
+const [submitted, setSubmitted] = useState(false);
+const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [form, setForm] = useState({
     // STEP 1
@@ -773,8 +777,38 @@ const step2Valid =
      SUBMIT
   ========================= */
 
-  const handleSubmit = async () => {
-  if (!step4Valid) return;
+//   const handleSubmit = async () => {
+//   if (!step4Valid) return;
+
+//   try {
+//     const response = await fetch("/api/apply", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(form),
+//     });
+
+//     const result = await response.json();
+
+//     if (!response.ok) {
+//       alert(result.error || "Something went wrong.");
+//       return;
+//     }
+
+//     console.log("APPLICATION SAVED:", result.application);
+
+//     setSubmitted(true);
+//   } catch (error) {
+//     console.error("Submission error:", error);
+//     alert("Unable to submit application. Please try again.");
+//   }
+// };
+
+const handleSubmit = async () => {
+  if (!step4Valid || isSubmitting) return;
+
+  setIsSubmitting(true);
 
   try {
     const response = await fetch("/api/apply", {
@@ -795,9 +829,18 @@ const step2Valid =
     console.log("APPLICATION SAVED:", result.application);
 
     setSubmitted(true);
+
+    // Keep the submit button locked for 3 seconds
+    setTimeout(() => {
+      setIsSubmitting(false);
+    }, 3000);
+
   } catch (error) {
     console.error("Submission error:", error);
     alert("Unable to submit application. Please try again.");
+
+    // Allow retry after an error
+    setIsSubmitting(false);
   }
 };
   /* =========================
@@ -1700,7 +1743,7 @@ const step2Valid =
                     </button>
 
 
-                    <button
+                    {/* <button
                       type="button"
                       disabled={!step4Valid}
                       onClick={handleSubmit}
@@ -1720,7 +1763,29 @@ const step2Valid =
                       `}
                     >
                       SUBMIT APPLICATION
-                    </button>
+                    </button> */}
+
+                    <button
+  type="button"
+  disabled={!step4Valid || isSubmitting}
+  onClick={handleSubmit}
+  className={`
+    rounded-full
+    px-7
+    py-4
+    text-sm
+    font-semibold
+    transition-all
+    duration-300
+    ${
+      step4Valid && !isSubmitting
+        ? "bg-white text-black hover:scale-[1.02]"
+        : "cursor-not-allowed bg-white/10 text-white/30"
+    }
+  `}
+>
+  {isSubmitting ? "SUBMITTING..." : "SUBMIT APPLICATION"}
+</button>
 
                   </div>
 
